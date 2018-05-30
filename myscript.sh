@@ -16,8 +16,8 @@ sudo mysqladmin password admin
 #============================
 
 echo "Creating user:- admin with password:- admin"
-sudo mysql -u root mysql --execute="CREATE USER 'admin1'@'%' IDENTIFIED BY 'admin';"
-sudo mysql -u root mysql --execute="GRANT ALL PRIVILEGES ON * . * TO 'admin1@%' IDENTIFIED BY 'admin';"
+sudo mysql -u root mysql --execute="CREATE USER 'admin'@'%' IDENTIFIED BY 'admin';"
+sudo mysql -u root mysql --execute="GRANT ALL PRIVILEGES ON * . * TO 'admin'@'%' IDENTIFIED BY 'admin';"
 sudo mysql -u root mysql --execute="FLUSH PRIVILEGES;"
 sudo add-apt-repository ppa:ondrej/php
 echo -ne '\n'
@@ -50,15 +50,40 @@ echo "updating system"
 sudo apt-get update
 
 #install compser and drush
+echo "instaling drush"
 sudo apt-get curl
 sudo curl -sS https://getcomposer.org/installer | php
 sudo mv composer.phar /usr/local/bin/composer
 sudo echo 'export PATH="$HOME/.config/composer/vendor/bin:$PATH"'  >>  .bashrc
 source ~/.bashrc
 composer global require drush/drush:8.*
-
 composer global update
 
+echo "instaling php CodeSniffer , Drupal and DrupalPractice"
+
+composer global require "squizlabs/php_codesniffer=2.7.0"
+composer global require drupal/coder:^8.2.12
+sudo ln -s ~/.config/composer/vendor/drupal/coder/coder_sniffer/Drupal ~/.config/composer/vendor/squizlabs/php_codesniffer/CodeSniffer/Standards/Drupal
+sudo ln -s ~/.config/composer/vendor/drupal/coder/coder_sniffer/DrupalPractice ~/.config/composer/vendor/squizlabs/php_codesniffer/CodeSniffer/Standards/DrupalPractice
+
+
+echo "Installing Less "
+sudo apt-get install npm
+sudo npm install -g less
+sudo apt install node-less
+
+echo "instaling compass and saas"
+sudo apt-get install -y git-core curl zlib1g-dev build-essential libssl-dev libreadline-dev libyaml-dev libsqlite3-dev sqlite3 libxml2-dev libxslt1-dev libcurl4-openssl-dev python-software-properties
+sudo apt-get install -y libgdbm-dev libncurses5-dev automake libtool bison libffi-dev
+
+curl -L https://get.rvm.io | bash -s stable
+source ~/.rvm/scripts/rvm
+echo "source ~/.rvm/scripts/rvm" >> ~/.bashrc
+rvm install 2.3.1
+rvm use 2.3.1 --default
+ruby -v
+sudo gem install compass
+sudo gem install sass
 sudo apt-get update
 
 echo "Thank you using Nishant script any suggestion ping me on nishantkumar155@gmail.com"
