@@ -61,8 +61,8 @@ composer global update
 
 echo "instaling php CodeSniffer , Drupal and DrupalPractice"
 
-composer global require "squizlabs/php_codesniffer=2.7.0"
-composer global require drupal/coder:^8.2.12
+sudo composer global require "squizlabs/php_codesniffer=2.9.1"
+sudo composer global require drupal/coder:^8.2.12
 sudo ln -s ~/.config/composer/vendor/drupal/coder/coder_sniffer/Drupal ~/.config/composer/vendor/squizlabs/php_codesniffer/CodeSniffer/Standards/Drupal
 sudo ln -s ~/.config/composer/vendor/drupal/coder/coder_sniffer/DrupalPractice ~/.config/composer/vendor/squizlabs/php_codesniffer/CodeSniffer/Standards/DrupalPractice
 
