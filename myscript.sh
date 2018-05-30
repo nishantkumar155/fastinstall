@@ -17,10 +17,10 @@ sudo mysqladmin password admin
 
 echo "Creating user:- admin with password:- admin"
 sudo mysql -u root mysql --execute="CREATE USER 'admin1'@'%' IDENTIFIED BY 'admin';"
-sudo mysql -u root mysql --execute="GRANT ALL PRIVILEGES ON * . * TO 'admin1@%' IDENTIFIED BY 'admin';" 
+sudo mysql -u root mysql --execute="GRANT ALL PRIVILEGES ON * . * TO 'admin1@%' IDENTIFIED BY 'admin';"
 sudo mysql -u root mysql --execute="FLUSH PRIVILEGES;"
 sudo add-apt-repository ppa:ondrej/php
-echo -ne '\n' 
+echo -ne '\n'
 sudo apt-get update
 sudo service apache2 stop
 sudo apt-get install php7.1 php7.1-common -y
@@ -48,4 +48,21 @@ echo "instaling Phpstrom"
 sudo snap install phpstorm --classic
 echo "updating system"
 sudo apt-get update
+
+#install compser and drush
+
+sudo curl -sS https://getcomposer.org/installer | php
+sudo mv composer.phar /usr/local/bin/composer
+sudo echo 'export PATH="$HOME/.config/composer/vendor/bin:$PATH"'  >>  .bashrc
+sudo echo 'parse_git_branch() {
+     git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ (\1)/'
+}
+export PS1="\u@\h \[\033[32m\]\w\[\033[33m\]\$(parse_git_branch)\[\033[00m\] $ "
+'  >>  .bashrc
+
+source ~/.bashrc
+composer global require drush/drush:8.*
+
+composer global update
+
 echo "Thank you using Nishant script any suggestion ping me on nishantkumar155@gmail.com"
