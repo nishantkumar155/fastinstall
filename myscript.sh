@@ -50,16 +50,10 @@ echo "updating system"
 sudo apt-get update
 
 #install compser and drush
-
+sudo apt-get curl
 sudo curl -sS https://getcomposer.org/installer | php
 sudo mv composer.phar /usr/local/bin/composer
 sudo echo 'export PATH="$HOME/.config/composer/vendor/bin:$PATH"'  >>  .bashrc
-sudo echo 'parse_git_branch() {
-     git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ (\1)/'
-}
-export PS1="\u@\h \[\033[32m\]\w\[\033[33m\]\$(parse_git_branch)\[\033[00m\] $ "
-'  >>  .bashrc
-
 source ~/.bashrc
 composer global require drush/drush:8.*
 
