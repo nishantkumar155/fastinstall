@@ -65,4 +65,6 @@ composer global require drush/drush:8.*
 
 composer global update
 
+sudo apt-get update
+
 echo "Thank you using Nishant script any suggestion ping me on nishantkumar155@gmail.com"
