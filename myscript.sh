@@ -51,7 +51,7 @@ sudo apt-get update
 
 #install compser and drush
 echo "instaling drush"
-sudo apt-get curl
+sudo apt-get installcurl
 sudo curl -sS https://getcomposer.org/installer | php
 sudo mv composer.phar /usr/local/bin/composer
 sudo echo 'export PATH="$HOME/.config/composer/vendor/bin:$PATH"'  >>  .bashrc
