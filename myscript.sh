@@ -51,10 +51,10 @@ sudo apt-get update
 
 #install compser and drush
 echo "instaling drush"
-sudo apt-get installcurl
+sudo apt-get install curl
 sudo curl -sS https://getcomposer.org/installer | php
 sudo mv composer.phar /usr/local/bin/composer
-sudo echo 'export PATH="$HOME/.config/composer/vendor/bin:$PATH"'  >>  .bashrc
+sudo echo 'export PATH="$HOME/.config/composer/vendor/bin:$PATH"'  >>  ~/.bashrc
 source ~/.bashrc
 composer global require drush/drush:8.*
 composer global update
