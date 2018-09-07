@@ -85,5 +85,5 @@ ruby -v
 sudo gem install compass
 sudo gem install sass
 sudo apt-get update
-
+sudo apt-get install nodejs
 echo "Thank you using Nishant script any suggestion ping me on nishantkumar155@gmail.com"
